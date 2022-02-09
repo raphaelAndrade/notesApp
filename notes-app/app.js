@@ -1,9 +1,8 @@
-// const add = require('./utils.js')
-// const sum = add(4,8)
-// console.log(sum)
-
+const validador = require('validator')
 const getNotes = require('./notes.js')
 
 const newNotes = getNotes();
 
 console.log(newNotes);
+
+console.log(validador.isURL('andre@gmail'))
