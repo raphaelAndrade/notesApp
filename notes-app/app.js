@@ -3,6 +3,6 @@ const getNotes = require('./notes.js')
 
 const newNotes = getNotes();
 
-console.log(chalk.blue(newNotes));
+console.log(chalk.red(newNotes));
 
 
