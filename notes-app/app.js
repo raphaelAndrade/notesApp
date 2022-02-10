@@ -26,7 +26,7 @@ yargs.command({
     },
     handler: (argv) => notes.addNote(argv.title, argv.body)
 })
-
+ 
 // Create remove command
 
 yargs.command({
@@ -56,9 +56,8 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'list a new note',
-    handler: () => console.log('listing all the notes!')
+    handler: () => notes.listNotes()
 })
-// add, remove, read, list
 
 
 yargs.parse() 

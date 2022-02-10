@@ -4,7 +4,7 @@ const getNotes = () => {
     return 'Your notes...'
 }
 
-
+ 
 //Create a function to add new notes
 const addNote = (title, body) => {
   const notes = loadNotes();
@@ -25,7 +25,7 @@ const addNote = (title, body) => {
 //Create a function to remove notes
 
 const removeNotes = title => {
-    let notes = loadNotes();
+    const notes = loadNotes();
     const noIncludeRemovedNote = notes.filter(note => note.title !== title
     )
     if(notes.length === 1) {
@@ -37,6 +37,17 @@ const removeNotes = title => {
     } else {
         saveNotes(noIncludeRemovedNote)
         console.log(chalk.green("Note was removed"))
+    }
+}
+
+// Create a function to list all notes
+
+const listNotes = () => {
+    const notes = loadNotes()
+    console.log(chalk.inverse('Your notes...'))
+
+    for(note of notes) {
+        console.log(chalk.green(note.title))
     }
 }
 
@@ -61,5 +72,6 @@ const loadNotes = () =>{
 module.exports = {
     getNotes,
     addNote,
-    removeNotes
+    removeNotes,
+    listNotes
 }; 
