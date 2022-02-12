@@ -4,40 +4,34 @@ const chalk = require('chalk')
 //Create a function to add new notes 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNote = notes.find(note => note.title === title)
+  const isDuplicated = notes.find(note => note.title === title)
   
-  if(!duplicateNote) {
+  if(isDuplicated) {
+      console.log("The Note was already added. Please try a different Note")
+  } else {
     notes.push({
         title,
         body
     })
-      saveNotes(notes)
-      console.log("New Note added")
-  } else {
-      console.log("The Note was already added. Please try a different Note")
+    saveNotes(notes)
+    console.log("New Note added")
   }
 }
 
 //Create a function to remove notes
-
 const removeNotes = title => {
     const notes = loadNotes();
-    const noIncludeRemovedNote = notes.filter(note => note.title !== title
-    )
-    if(notes.length === 1) {
-        notes = []
-        saveNotes(notes)
-        console.log(chalk.green("Note was removed"))
-    } else if(noIncludeRemovedNote.length === 0) {
-        console.log(chalk.red("Note its not found"))
-    } else {
+    const hasNote = notes.find(note => note.title === title)
+    if(hasNote) {
+        const noIncludeRemovedNote = notes.filter(note => note.title !== title)
         saveNotes(noIncludeRemovedNote)
-        console.log(chalk.green("Note was removed"))
+        console.log("Note was removed")
+    } else {
+        console.log("Note not Found")
     }
 }
 
 // Create a function to list all notes
-
 const listNotes = () => {
     const notes = loadNotes()
     console.log(chalk.inverse('Your notes...'))
